@@ -1,0 +1,576 @@
+.property{
+    margin: 103px 90px;
+    display: flex;
+    flex-direction: column;
+}
+.description{
+    width: 100%;
+    text-align: center;
+    /*margin-right: 15px;*/
+    margin: 40px auto;
+
+
+}
+
+.fixed{
+    position: fixed;
+    width: 24%;
+}
+.texts{
+    border: 1px solid #F2F5F8;
+    border-radius: 25px;
+}
+
+.line{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #F2F5F8;
+}
+.line div{
+    /*padding: 19px 17px;*/
+
+
+}
+.rightPad{
+    padding-right: 17px;
+}
+.line div p{
+    font-size: 13px;
+    font-weight: 500;
+    margin: 0 ;
+    padding: 21px 0 20px 0;
+    /*margin: 0;*/
+    /*font-size: 13px;*/
+    /*font-weight: 500;*/
+}
+.buttons{
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-around;
+}
+/*.buttons button {*/
+/*    width: 100%;*/
+/*    font-size: 13px;*/
+/*    font-weight: 500;*/
+/*    padding: 15px;*/
+/*    margin: 5px ;*/
+/*}*/
+
+.rightSide{
+    /*width: 70%;*/
+}
+.mainImage{
+    width: 100%;
+    text-align: center;
+    border: 1px solid #F2F5F8;
+    border-radius: 25px;
+    /*margin-left: 15px;*/
+}
+.slideImage{
+    width: 20%;
+    text-align: center;
+    border: 1px solid #F2F5F8;
+    border-radius: 25px;
+    /*margin-left: 15px;*/
+}
+
+.borderBottomNone{
+    border: transparent !important;
+}
+.modalBody{
+    background-color: #f9fafd;
+    border-radius: 53px 53px 0 0;
+}
+.modalHeaderIcon{
+    font-size: 1.25rem !important;
+    font-weight: 800;
+    text-align: right;
+    margin-bottom: 0;
+}
+.modalHeaderIcon::before{
+    margin-left: 1.5rem;
+    font-size: 1.5rem;
+    line-height: .5;
+}
+.modalBodyTitle{
+    font-size: 1.25rem;
+    /*font-weight: 800;*/
+    margin-bottom: 2.25rem;
+}
+/*.submitBtn{*/
+/*    width: 9.1rem !important;*/
+/*    height: 2.4rem !important;*/
+/*    font-size: .8rem !important;*/
+/*}*/
+.submitBtn{
+    width: 9.1rem !important;
+    height: 2.4rem !important;
+    font-size: .8rem !important;
+
+    border-radius: 10px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3px 0 6px 0;
+    margin: 5px !important;
+    /*border: hidden !important;*/
+    /*outline: hidden !important;*/
+
+}
+
+.sellButton{
+    color: #ff4848 !important;
+    background-color: #fff !important;
+    border: 1px solid #ff4848 !important;
+}
+
+.buyButton{
+    /*background: #FF4848 0% 0% no-repeat padding-box !important;*/
+    /*border-radius: 10px;*/
+    /*color: white !important;*/
+    /*border: hidden !important;*/
+    color: #fff !important;
+    background-color: #ff4848 !important;
+    border: none !important;
+}
+.modalBtn {
+    padding: .9rem 3.4rem !important;
+    font-size: .7rem !important;
+    margin-top: 3.4rem !important;
+
+    /*padding: 1.125rem 4.25rem !important;*/
+    background-color: #ff4848 !important;
+    /*font-size: .875rem !important;*/
+    font-weight: 500 !important;
+    color: #fff!important;
+    -moz-border-radius: 10px;
+    border-radius: 10px !important;
+    /*margin-top: 4.1875rem;*/
+    border: none !important;
+}
+.autoCalcInputBox{
+    display: flex;
+
+    flex-direction: column;
+    width: 3.813rem;
+    height: 3.813rem;
+    border-radius: 10px;
+    background-color: #fff;
+    border: none;
+    align-items: center;
+    justify-content: center;
+    margin: 0 1.188rem 1.2rem 1.188rem;
+}
+.numericInput{
+    text-align: center !important;
+    width: 100%;
+    border: none;
+    background-color: transparent;
+
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    /*height: 40px;*/
+    /*width: 50px;*/
+    /*border: hidden;*/
+    /*margin-bottom: 15px;*/
+}
+.popupRange{
+    width: 9.5rem!important;
+    margin: 0 1.43rem 1rem 1.43rem;
+}
+.inputRange{
+    height: 1rem;
+    position: relative;
+    width: 100%;
+    direction: ltr;
+}
+.inputRangeLabel{
+    font-size: .875rem;
+    font-family: dana;
+    font-weight: 400;
+    color: #000;
+}
+.inputRangeLabelMin{
+    bottom: -1.4rem;
+    position: absolute;
+}
+.inputRangeLabelMax{
+    bottom: -1.4rem;
+    position: absolute;
+    right: 0;
+}
+.width70{
+    width: 38% !important;
+}
+.modalText{
+    /*font-size: 15px;*/
+    /*font-weight: 500;*/
+    font-size: .8rem;
+    font-weight: 400;
+    text-align: right;
+    color: #000;
+}
+.modalTextSmall{
+    /*font-size: 12px;*/
+    /*font-weight: 500;*/
+    font-size: .7rem;
+    font-weight: 400;
+    margin-right: 3px;
+}
+.boldText{
+    font-weight: 600 !important;
+}
+
+.secondaryDesc{
+    /*text-align: right;*/
+    margin-left: 15px;
+}
+.marketType{
+    text-align: right;
+    font: normal normal 600 16px/24px Dana;
+    letter-spacing: 0px;
+    color: #DEDEDE;
+    margin: 30px 0 10px 0;
+}
+.propertyName{
+    text-align: right;
+    font: normal normal 800 35px/56px Dana;
+    letter-spacing: 0px;
+    color: #000000;
+}
+.border{
+    border: 2px solid #F1F4FC;
+    border-radius: 25px;
+    padding-bottom: 50px;
+
+}
+.buy{}
+.sell{
+    text-align: right;
+}
+
+/*.buttons button {*/
+/*    width: 100%;*/
+/*    font-size: 13px;*/
+/*    font-weight: 500;*/
+/*    margin: 5px !important;*/
+/*}*/
+.sellTitle{
+
+    font: normal normal 800 20px/32px Dana;
+    letter-spacing: 0px;
+    color: #000000;
+}
+.borderNone{
+    border-style: hidden;
+}
+.tHeader{
+
+}
+.tableContent{
+    text-align: center;
+    border-radius: 20px;
+}
+
+@media (min-width: 800px){
+    .property{
+        margin: 103px 90px;
+        display: flex;
+        flex-direction: row;
+    }
+    .description{
+        width: 50%;
+        text-align: center;
+        margin: 0 15px 15px 0;
+
+
+    }
+
+    .fixed{
+        position: fixed;
+        width: 24%;
+    }
+    .texts{
+        border: 1px solid #F2F5F8;
+        border-radius: 25px;
+    }
+
+    .line{
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #F2F5F8;
+    }
+    .line div{
+        /*padding: 19px 17px;*/
+
+
+    }
+    .rightPad{
+        padding-right: 17px;
+    }
+    .line div p{
+        font-size: 13px;
+        font-weight: 500;
+        margin: 0 ;
+        padding: 21px 0 20px 0;
+        /*margin: 0;*/
+        /*font-size: 13px;*/
+        /*font-weight: 500;*/
+    }
+    .buttons{
+        justify-content: space-between;
+    }
+    /*.buttons button {*/
+    /*    width: 100%;*/
+    /*    font-size: 13px;*/
+    /*    font-weight: 500;*/
+    /*    padding: 15px;*/
+    /*    margin: 5px ;*/
+    /*}*/
+
+    .rightSide{
+        width: 50%;
+    }
+    .mainImage{
+        width: 100%;
+        text-align: center;
+        border: 1px solid #F2F5F8;
+        border-radius: 25px;
+        /*margin-left: 15px;*/
+    }
+    .slideImage{
+        width: 20%;
+        text-align: center;
+        border: 1px solid #F2F5F8;
+        border-radius: 25px;
+        /*margin-left: 15px;*/
+    }
+
+    .borderBottomNone{
+        border: transparent !important;
+    }
+    .modalBody{
+        border-radius: 20px 20px 0 0;
+    }
+
+    /*.numericInput{*/
+    /*    height: 40px;*/
+    /*    width: 50px;*/
+    /*    border: hidden;*/
+    /*    margin-bottom: 15px;*/
+    /*}*/
+    .width70{
+        width: 38% !important;
+    }
+
+
+
+    .secondaryDesc{
+        /*text-align: right;*/
+        margin-left: 15px;
+    }
+    .marketType{
+        text-align: right;
+        font: normal normal 600 16px/24px Dana;
+        letter-spacing: 0px;
+        color: #DEDEDE;
+        margin: 30px 0 10px 0;
+    }
+    .propertyName{
+        text-align: right;
+        font: normal normal 800 35px/56px Dana;
+        letter-spacing: 0px;
+        color: #000000;
+    }
+    .border{
+        border: 2px solid #F1F4FC;
+        border-radius: 25px;
+        padding-bottom: 50px;
+
+    }
+    .buy{}
+    .sell{
+        text-align: right;
+    }
+
+    .buttons button {
+        width: 100%;
+        font-size: 13px;
+        font-weight: 500;
+        margin: 5px !important;
+    }
+    .sellTitle{
+
+        font: normal normal 800 20px/32px Dana;
+        letter-spacing: 0px;
+        color: #000000;
+    }
+    .borderNone{
+        border-style: hidden;
+    }
+    .tHeader{
+
+    }
+    .tableContent{
+        text-align: center;
+        border-radius: 20px;
+    }
+}
+@media (min-width: 900px){
+
+    .modalText{
+        font-size: 1rem;
+        font-weight: 400;
+        text-align: right;
+        color: #000;
+    }
+    .modalTextSmall{
+        /*font-size: 12px;*/
+        /*font-weight: 500;*/
+        font-size: .87rem;
+        font-weight: 400;
+        color: #000;
+        margin-right: 3px;
+    }
+    .popupRange{
+        width: 15.93rem !important;
+        margin: 0 1.43rem;
+    }
+    .modalBtn {
+
+
+        padding: 1.125rem 4.25rem !important;
+
+        font-size: .875rem !important;
+
+        margin-top: 4.1875rem;
+
+    }
+}
+@media (min-width: 992px){
+    .property{
+        margin: 103px 114px;
+        display: flex;
+    }
+    .description{
+        width: 40%;
+        text-align: center;
+        margin-right: 15px;
+
+
+    }
+    .fixed{
+        position: fixed;
+        width: 24%;
+    }
+    .texts{
+        border: 1px solid #F2F5F8;
+        border-radius: 25px;
+    }
+    .rightSide{
+        width: 60%;
+    }
+    .mainImage{
+        width: 100%;
+        text-align: center;
+        border: 1px solid #F2F5F8;
+        border-radius: 25px;
+        /*margin-left: 15px;*/
+    }
+    .slideImage{
+        width: 20%;
+        text-align: center;
+        border: 1px solid #F2F5F8;
+        border-radius: 25px;
+        /*margin-left: 15px;*/
+    }
+}
+@media screen and (max-width: 1370px) and (min-width: 1200px){
+    .property{
+        margin: 103px 114px;
+        display: flex;
+    }
+    .description{
+        width: 30%;
+        text-align: center;
+        margin-right: 15px;
+
+
+    }
+    .fixed{
+        position: fixed;
+        width: 24%;
+    }
+    .texts{
+        border: 1px solid #F2F5F8;
+        border-radius: 25px;
+    }
+    .rightSide{
+        width: 70%;
+        /*text-align: center;*/
+        /*border: 1px solid #F2F5F8;*/
+        /*border-radius: 25px;*/
+        /*margin-left: 15px;*/
+    }
+    .mainImage{
+        width: 100%;
+        text-align: center;
+        border: 1px solid #F2F5F8;
+        border-radius: 25px;
+        /*margin-left: 15px;*/
+    }
+    .slideImage{
+        width: 20%;
+        text-align: center;
+        border: 1px solid #F2F5F8;
+        border-radius: 25px;
+        /*margin-left: 15px;*/
+    }
+    .line{
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #F2F5F8;
+    }
+    .line div{
+        /*padding: 19px 17px;*/
+
+
+    }
+    .rightPad{
+        padding-right: 17px;
+    }
+    .line div p{
+        font-size: 13px;
+        font-weight: 500;
+        margin: 0 ;
+        padding: 21px 0 20px 0;
+        /*margin: 0;*/
+        /*font-size: 13px;*/
+        /*font-weight: 500;*/
+    }
+    .buttons{
+        display: flex;
+        margin-top: 20px;
+    }
+    /*.buttons button {*/
+    /*    width: 100%;*/
+    /*    font-size: 13px;*/
+    /*    font-weight: 500;*/
+    /*    padding: 15px;*/
+    /*    margin: 5px ;*/
+    /*}*/
+    .submitBtn{
+        width: 9.1rem !important;
+        height: 2.4rem !important;
+        font-size: .8rem !important;
+    }
+    .buyButton{
+        /*background: #FF4848 0% 0% no-repeat padding-box !important;*/
+        /*border-radius: 10px;*/
+        /*color: white !important;*/
+        /*border: hidden !important;*/
+    }
+}

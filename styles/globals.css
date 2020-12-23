@@ -2,7 +2,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  font-family: Dana,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
@@ -14,3 +14,338 @@ a {
 * {
   box-sizing: border-box;
 }
+
+@charset "UTF-8";
+
+@font-face {
+  font-family: "realestate";
+  src:url("../fonts/realestate.eot");
+  src:url("../fonts/realestate.eot?#iefix") format("embedded-opentype"),
+  url("../fonts/realestate.woff") format("woff"),
+  url("../fonts/realestate.ttf") format("truetype"),
+  url("../fonts/realestate.svg#realestate") format("svg");
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+[data-icon]:before {
+  font-family: "realestate" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="r-"]:before,
+[class*=" r-"]:before {
+  font-family: "realestate" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.r-apartment:before {
+  content: "\e000";
+}
+.r-search:before {
+  content: "\e001";
+}
+.r-signal:before {
+  content: "\e002";
+}
+.r-apartments:before {
+  content: "\e003";
+}
+.r-statistical:before {
+  content: "\e004";
+}
+.r-business:before {
+  content: "\e005";
+}
+.r-currency:before {
+  content: "\e006";
+}
+.r-target:before {
+  content: "\e007";
+}
+.r-technology:before {
+  content: "\e008";
+}
+.r-hands-and-gestures:before {
+  content: "\e009";
+}
+.r-user:before {
+  content: "\e00a";
+}
+.r-home:before {
+  content: "\e00b";
+}
+.r-clock:before {
+  content: "\e00c";
+}
+.r-refresh:before {
+  content: "\e00d";
+}
+.r-leftarrow:before {
+  content: "\e00e";
+}
+.r-calendar:before {
+  content: "\e00f";
+}
+.r-clockloop:before {
+  content: "\e010";
+}
+.r-toparrow:before {
+  content: "\e011";
+}
+.r-bottomarrow:before {
+  content: "\e012";
+}
+.r-location:before {
+  content: "\e013";
+}
+.r-men:before {
+  content: "\e014";
+}
+.r-rightarrow:before {
+  content: "\e015";
+}
+.r-more:before {
+  content: "\e016";
+}
+.r-price:before {
+  content: "\e017";
+}
+.r-twitter:before {
+  content: "\e018";
+}
+.r-facebook:before {
+  content: "\e019";
+}
+.r-linkedin:before {
+  content: "\e01a";
+}
+.r-cancel:before {
+  content: "\e01b";
+}
+.r-building-house-l:before {
+  content: "\e01c";
+}
+.r-building-house-q:before {
+  content: "\e01d";
+}
+.r-building-house-h:before {
+  content: "\e01e";
+}
+.r-coins-dollar:before {
+  content: "\e01f";
+}
+.r-coins:before {
+  content: "\e020";
+}
+.r-money-dollar-badge:before {
+  content: "\e021";
+}
+.r-money:before {
+  content: "\e022";
+}
+.r-google:before {
+  content: "\e023";
+}
+.r-geotag:before {
+  content: "\e024";
+}
+.r-geotag-home:before {
+  content: "\e025";
+}
+.r-geotag-empty:before {
+  content: "\e026";
+}
+.r-graph:before {
+  content: "\e027";
+}
+.r-building-house-c:before {
+  content: "\e028";
+}
+.r-left-arrow-circle:before {
+  content: "\e029";
+}
+.r-safe-deposit:before {
+  content: "\e02a";
+}
+.r-chart-diagram:before {
+  content: "\e02b";
+}
+.r-building-house-e:before {
+  content: "\e02c";
+}
+.r-building-house-p:before {
+  content: "\e02d";
+}
+.r-right-arrow-circle:before {
+  content: "\e02e";
+}
+.r-person:before {
+  content: "\e02f";
+}
+.r-search1:before {
+  content: "\e030";
+}
+.r-money-bag:before {
+  content: "\e031";
+}
+.r-battery-accumulator:before {
+  content: "\e032";
+}
+.r-money-growth-fall:before {
+  content: "\e033";
+}
+.r-presentation:before {
+  content: "\e034";
+}
+.r-instagram:before {
+  content: "\e035";
+}
+.r-reply:before {
+  content: "\e036";
+}
+.r-quotes:before {
+  content: "\e037";
+}
+.r-like:before {
+  content: "\e038";
+}
+.r-archive:before {
+  content: "\e039";
+}
+.r-building-house-j-1:before {
+  content: "\e03a";
+}
+.r-list-structure-b:before {
+  content: "\e03b";
+}
+.r-list-structure-a:before {
+  content: "\e03c";
+}
+.r-arrow-turn-left:before {
+  content: "\e03d";
+}
+.r-arrow-rotation:before {
+  content: "\e03e";
+}
+.r-twitter-outline:before {
+  content: "\e03f";
+}
+.r-lock:before {
+  content: "\e040";
+}
+.r-hashtag:before {
+  content: "\e041";
+}
+.r-phone:before {
+  content: "\e042";
+}
+.r-mail:before {
+  content: "\e043";
+}
+.r-building-house-f:before {
+  content: "\e044";
+}
+.r-building-house-o:before {
+  content: "\e045";
+}
+.r-check-sircle:before {
+  content: "\e046";
+}
+.r-coding-award:before {
+  content: "\e047";
+}
+.r-file-check:before {
+  content: "\e048";
+}
+.r-dislike:before {
+  content: "\e049";
+}
+.r-users:before {
+  content: "\e04a";
+}
+.r-sale:before {
+  content: "\e04b";
+}
+.r-map:before {
+  content: "\e04c";
+}
+.r-filter:before {
+  content: "\e04d";
+}
+.r-minus:before {
+  content: "\e04e";
+}
+.r-check:before {
+  content: "\e04f";
+}
+.r-shopping:before {
+  content: "\e050";
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+.rtl{
+  direction: rtl;
+}
+.ltr{
+  direction: ltr;
+}
+.no-border{
+  border: none;
+}
+
+
+.modal-header .close {
+  padding: 1rem 1rem;
+  margin: -1rem -1rem !important;
+}
+
+.modal-content{
+  /*width: 49.375rem !important;*/
+  /*max-width: 56rem!important;*/
+  /*height: 30.68rem !important;*/
+  margin: 0 auto !important;
+}
+.modal-dialog {
+  max-width: 350px !important;
+  /*width: 100%;*/
+  height: 30.68rem !important;
+  margin: 4rem auto !important;
+}
+button:focus {
+  outline: none !important;
+}
+@media (min-width: 900px){
+  .modal-dialog {
+    /*max-width: 700px !important;*/
+    max-width: 56rem!important;
+    /*width: 100%;*/
+    height: 30.68rem !important;
+    margin: 7rem auto !important;
+  }
+  .modal-content{
+    width: 49.375rem !important;
+    max-width: 56rem!important;
+    /*height: 30.68rem !important;*/
+    margin: 0 auto !important;
+  }
+}
+

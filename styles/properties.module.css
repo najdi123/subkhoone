@@ -1,0 +1,406 @@
+.estateCard {
+    width: 23.12rem;
+    height: 29.62rem;
+    -moz-border-radius: 1.5rem;
+    border-radius: 1.5rem;
+    border: 2px solid #f1f1f1;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: flex;
+    -webkit-flex-direction: column;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    flex-direction: column;
+    -moz-transition: all .5s ease;
+    transition: all .5s ease;
+    margin-bottom: 2rem;
+}
+.cardTop {
+    height: 75.73%;
+    width: 100%;
+    position: relative;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: flex;
+    -webkit-flex-direction: column;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    flex-direction: column;
+    -webkit-justify-content: flex-end;
+    -moz-box-pack: end;
+    justify-content: flex-end;
+}
+.card__title {
+    /*font-size: 1.12rem;*/
+    font-weight: 800;
+    color: #000;
+    letter-spacing: -.97px;
+    position: absolute;
+    /*right: 2.12rem;*/
+    /*top: 2.12rem;*/
+    z-index: 99;
+    -moz-transition: all .5s ease;
+    transition: all .5s ease;
+    margin-bottom: 0;
+
+    font-size: .9rem;
+    right: 1.5rem;
+    top: 1.5rem;
+}
+.imgContainer{
+    margin-top: auto;
+    width: 100%;
+    height: 73.53%;
+    position: relative;
+    -moz-transition: all .5s ease;
+    transition: all .5s ease;
+}
+.imgContainer:hover {
+    height: 120%;
+}
+.imgContainer:hover .imgBox__label {
+    opacity: 0;
+}
+.estateCard:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
+.estateCard:hover .card__title {
+    color: #1388e6 !important;
+}
+.imgBox {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.imgBox__label {
+    font-size: .8rem;
+    -moz-border-radius: .3rem;
+    border-radius: .3rem;
+    padding: .3rem .6rem;
+    left: .8rem;
+    top: 1rem;
+
+    position: absolute;
+
+    font-weight: 400;
+    color: #fff;
+
+    background-color: #1abb9c;
+
+    display: -webkit-flex;
+    display: -moz-box;
+    display: flex;
+    -webkit-justify-content: center;
+    -moz-box-pack: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    align-items: center;
+    -moz-transition: all .3s ease;
+    transition: all .3s ease;
+}
+.card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    -moz-transition: all .5s ease;
+    transition: all .5s ease;
+    -moz-border-radius: 2.75rem 1.56rem 1.56rem 1.56rem;
+    /*border-radius: 2.75rem 1.56rem 1.56rem 1.56rem;*/
+    border-radius: 1.9rem 1.1rem 1.1rem 1.1rem;
+}
+
+.card__location {
+    font-size: .8rem;
+    left: 1.5rem;
+    bottom: 1.2rem;
+    font-weight: 400;
+    color: #fff;
+    position: absolute;
+}
+.priceBox {
+    margin-right: 1.5rem;
+    margin-top: 1.5rem;
+    /*padding-right: 3.1rem;*/
+
+    display: -webkit-flex;
+    display: -moz-box;
+    display: flex;
+    -webkit-flex-direction: column;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    flex-direction: column;
+    position: relative;
+    color: #000;
+    text-align: right;
+}
+.icon{
+    background-color: rgba(229, 229, 229, 0.7);
+    color: #1388e6;
+    border-radius: 5px;
+    padding: 5px 7px 0 7px;
+}
+.label {
+    font-size: .8rem;
+    font-weight: 400;
+    color: #000;
+    letter-spacing: -.76px;
+    padding-right: 1.1rem;
+}
+.price {
+    font-size: 1.12rem;
+    font-weight: 900;
+    letter-spacing: 0;
+    color: #000;
+}
+
+
+.title{
+    text-align: right;
+    margin-top: 128px;
+    margin-right: 60px;
+}
+.smallTittle{
+    color: #c5c5c5;
+    font-weight: 500;
+}
+.largeTittle{
+    font-weight: 700;
+}
+.properties{
+    text-align: right;
+    margin-top: 50px !important;
+    /*margin-right: 60px;*/
+    justify-content: center;
+
+
+}
+.property{
+    /*width: 15rem;*/
+    /*height: 19rem;*/
+    background-color: #FFF;
+    border: 2px solid #F2F5F8;
+    border-radius: 25px;
+    margin: 25px 25px;
+
+}
+.wrapper{
+    /*padding: 0 0 0 10px;*/
+    /*width: 90%;*/
+    /*padding: 10px;*/
+}
+.propertyName{
+    /*padding: 20px 30px;*/
+    /*padding: 10px 15px;*/
+    /*padding: 18px 19px;*/
+    margin-bottom: 0;
+    /*font-size: 15px;*/
+    font-weight: 500;
+    /*font: normal normal 800 18px/29px Dana;*/
+    letter-spacing: -0.97px;
+    color: #000000;
+
+    font-size: .9rem;
+    right: 1.5rem;
+    top: 1.5rem;
+}
+.propertyImageWrapper{
+    position: relative;
+}
+.propertyImage{
+    /*height: 170px;*/
+    width: 100%;
+    background-color: lightgrey;
+    border-radius: 44px 25px 25px 25px;
+
+}
+.propertyImageTag{
+    position: absolute;
+    /*top: 20px;*/
+    /*left: 20px;*/
+    margin: 15px 20px;
+    background-color: #1abb9c;
+    /*padding: 10px;*/
+    color: white;
+    text-decoration: none;
+
+    font-size: .8rem;
+    -moz-border-radius: .3rem;
+    border-radius: .3rem;
+    padding: .3rem .6rem .4rem .6rem
+}
+.propertyPriceTitle{
+    /*font: normal normal normal 14px/21px Dana;*/
+    font-size: 12px;
+    letter-spacing: -0.76px;
+    color: #000000;
+    margin-bottom: 0;
+    margin-right: 4rem;
+    margin-top: 12px;
+}
+.propertyPricePM{
+    /*font: normal normal 900 18px/29px Dana;*/
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 0px;
+    margin-right: 4rem;
+    margin-bottom: 20px;
+
+}
+.marketsTab button{
+    margin-left: 3.25em;
+    border: hidden;
+    background-color: transparent;
+}
+
+@media (max-width: 767px){
+    .wrapper{
+        display: flex;
+        justify-content: center;
+    }
+    .estateCard {
+        width: 15rem;
+        height: 19rem;
+        -moz-border-radius: 1rem;
+        border-radius: 1rem;
+    }
+
+}
+@media (min-width: 768px){
+    .estateCard {
+        width: 16.2rem;
+        height: 20.7rem;
+        -moz-border-radius: 1rem;
+        border-radius: 1rem;
+    }
+
+
+    .wrapper{
+        /*padding: 10px;*/
+        /*width: 45%;*/
+    }
+    .properties{
+        /*margin: 40px 80px !important;*/
+    }
+    .property{
+        /*width: 280px;*/
+        /*width: 16.2rem!important;*/
+        /*height: 20.7rem;*/
+        background-color: #FFF;
+        border: 2px solid #F2F5F8;
+        border-radius: 25px;
+        /*margin: 25px 25px;*/
+    }
+    .propertyImage{
+        /*height: 170px;*/
+        width: 100%;
+        background-color: lightgrey;
+        border-radius: 44px 25px 25px 25px;
+    }
+
+}
+@media (min-width: 992px){
+    .wrapper{
+        /*padding: 10px;*/
+        /*width: 33%;*/
+    }
+    .properties{
+        /*margin: 0 40px !important;*/
+        /*margin-left: 50px !important;*/
+    }
+    .property{
+        /*width: 300px;*/
+        /*width: 16.2rem!important;*/
+        /*height: 20.7rem;*/
+        background-color: #FFF;
+        border: 2px solid #F2F5F8;
+        border-radius: 25px;
+        /*margin: 25px 25px;*/
+    }
+    .propertyImage{
+        /*height: 170px;*/
+        width: 100%;
+        background-color: lightgrey;
+        border-radius: 44px 25px 25px 25px;
+    }
+}
+
+
+@media screen and (max-width: 1370px) and (min-width: 1200px)
+{
+    .estateCard {
+        width: 16.2rem;
+        height: 20.7rem;
+        -moz-border-radius: 1rem;
+        border-radius: 1rem;
+    }
+
+
+    .title{
+        text-align: right;
+        margin-top: 128px;
+        margin-right: 130px;
+    }
+
+    .properties{
+        text-align: right;
+        /*margin: 50px 70px !important;*/
+        flex-wrap: wrap;
+        /*margin-top: 50px;*/
+        /*margin-right: 160px;*/
+
+    }
+    .property{
+        /*min-width: 100%;*/
+        /*width: 100%;*/
+        /*height: 304px;*/
+        width: 16.2rem!important;
+        height: 20.7rem;
+        /*margin: 12px;*/
+        padding: 0;
+        /*margin: 0 10px;*/
+        /*min-width: 100%;*/
+        /*margin: 25px 25px;*/
+    }
+    .wrapper{
+        /*padding: 10px;*/
+        /*width: 25%;*/
+    }
+    .propertyName{
+        /*padding: 20px 30px;*/
+        padding: 18px 19px;
+        margin-bottom: 0;
+        font-size: 15px;
+        font-weight: 500;
+        /*font: normal normal 800 18px/29px Dana;*/
+        letter-spacing: -0.97px;
+        color: #000000;
+    }
+    .propertyImage{
+        height: 170px;
+        /*width: 100%;*/
+        background-color: lightgrey;
+        border-radius: 44px 25px 25px 25px;
+    }
+    .propertyPriceTitle{
+        /*font: normal normal normal 14px/21px Dana;*/
+        font-size: 12px;
+        letter-spacing: -0.76px;
+        color: #000000;
+        margin-bottom: 0;
+        margin-right: 4rem;
+        margin-top: 12px;
+    }
+    .propertyPricePM{
+        /*font: normal normal 900 18px/29px Dana;*/
+        font-size: 15px;
+        font-weight: 900;
+        letter-spacing: 0px;
+        margin-right: 4rem;
+        margin-bottom: 20px;
+
+    }
+
+
+}
