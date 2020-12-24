@@ -52,9 +52,6 @@ export default function Properties({properties, ids, secondary, primary, exit}) 
         return market.map(item => {
             return (
                 <div>
-                    {console.log("market: ", market )}
-                    {console.log("marketName: ", marketName )}
-                    {console.log("DDData: ", market == secondary && "secondary")}
                     <Link href={`/properties/${item.id}/${marketName}`}>
                         {/*<Link href={`/properties/${item.id}/${data}`}>*/}
                         <a>
@@ -99,6 +96,33 @@ export default function Properties({properties, ids, secondary, primary, exit}) 
         return [getList(primary,"primary"), getList(secondary,"secondary"), getList(exit,"exit")]
     }
 
+    const tabList =()=>{
+        return(
+            <section className={`d-flex flex-row-reverse justify-content-end ${styles.marketsTab}`}>
+                <button
+                    className={display.latest && styles.active}
+                    onClick={() => setDisplay({latest: true, primary: false, secondary: false, exit: false})}
+                >آخرین ملک ها
+                </button>
+                <button
+                    className={display.primary && styles.active}
+                    onClick={() => setDisplay({latest: false, primary: true, secondary: false, exit: false})}
+                >بازار اولیه
+                </button>
+                <button
+                    className={display.secondary && styles.active}
+                    onClick={() => setDisplay({latest: false, primary: false, secondary: true, exit: false})}
+                >بازار ثانویه
+                </button>
+                <button
+                    className={display.exit && styles.active}
+                    onClick={() => setDisplay({latest: false, primary: false, secondary: false, exit: true})}
+                >بازار خروج
+                </button>
+            </section>
+        )
+    }
+
 
     return (
         <Layout>
@@ -114,24 +138,7 @@ export default function Properties({properties, ids, secondary, primary, exit}) 
                         <h2 className={styles.largeTittle}>فرصت های سرمایه گذاری</h2>
                     </div>
                 </section>
-                <section className={`d-flex flex-row-reverse justify-content-end container ${styles.marketsTab}`}>
-                    <button
-                        onClick={() => setDisplay({latest: true, primary: false, secondary: false, exit: false})}
-                    >آخرین ملک ها
-                    </button>
-                    <button
-                        onClick={() => setDisplay({latest: false, primary: true, secondary: false, exit: false})}
-                    >بازار اولیه
-                    </button>
-                    <button
-                        onClick={() => setDisplay({latest: false, primary: false, secondary: true, exit: false})}
-                    >بازار ثانویه
-                    </button>
-                    <button
-                        onClick={() => setDisplay({latest: false, primary: false, secondary: false, exit: true})}
-                    >بازار خروج
-                    </button>
-                </section>
+                {tabList()}
                 <section className={`${styles.properties} d-flex row justify-end`}>
 
 
@@ -145,19 +152,19 @@ export default function Properties({properties, ids, secondary, primary, exit}) 
                     {
                         display.secondary &&
                         secondary &&
-                        getList(secondary)
+                        getList(secondary,"secondary")
                     }
 
                     {
                         display.primary &&
                         primary &&
-                        getList(primary)
+                        getList(primary,"primary")
                     }
 
                     {
                         display.exit &&
                         exit &&
-                        getList(exit)
+                        getList(exit,"exit")
                     }
                 </section>
 

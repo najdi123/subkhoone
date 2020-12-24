@@ -32,7 +32,7 @@
 }
 .card__title {
     /*font-size: 1.12rem;*/
-    font-weight: 800;
+    font-weight: 700;
     color: #000;
     letter-spacing: -.97px;
     position: absolute;
@@ -252,8 +252,17 @@
     margin-left: 3.25em;
     border: hidden;
     background-color: transparent;
+    /*font-family: DanaBold !important;*/
+    padding: 0.5em 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #c4c4c4;
 }
-
+.active{
+    border-bottom: 4px solid !important;
+    color: #000!important;
+    font-weight: 700;
+}
 @media (max-width: 767px){
     .wrapper{
         display: flex;

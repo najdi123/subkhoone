@@ -9,6 +9,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import {DataContext} from "../../../../context/DataContext";
 import JSONbig from 'json-bigint';
+import ApiReq from "../../../../helpers/ApiReq";
 
 
 function Exit({propertyData, secondaryBuyOffersProps, secondarySellOffersProps}) {
@@ -33,9 +34,16 @@ function Exit({propertyData, secondaryBuyOffersProps, secondarySellOffersProps})
 
     console.log("propertyData: ", propertyData)
     // console.log("router: ",router["query"].id)
-    const SubmitOffer = (e) => {
+    const SubmitBuyOffer = async (e) => {
         e.preventDefault()
+        const config = {
+            headers: {'Content-Type': 'application/json'},
+            method: 'GET',
+            url: 'https://api.subkhoone.com/api/assets',
+        };
 
+        const res = await ApiReq(config)
+        const secondaryBuyOffers = await axios.get(`http://api.subkhoone.com/api/assets/${id}/secondary_markets/${secondaryId}/secondary_buy_offers`);
     }
 
     const BuyOfferModal=()=>{
@@ -98,10 +106,13 @@ function Exit({propertyData, secondaryBuyOffersProps, secondarySellOffersProps})
                         </div>
                     </div>
                     <div className="justify-content-center d-flex">
-                        <Button className={`btn  ${styles.modalBtn}`}
-                                variant="primary" onClick={handleCloseBuy}>
-                            ثبت
-                        </Button>
+                        <div onClick={SubmitBuyOffer}>
+                            <Button className={`btn  ${styles.modalBtn}`}
+                                    variant="primary" onClick={handleCloseBuy}>
+                                ثبت
+                            </Button>
+                        </div>
+
                     </div>
                 </Modal.Body>
 
@@ -231,7 +242,7 @@ function Exit({propertyData, secondaryBuyOffersProps, secondarySellOffersProps})
                         />
                     </div>
                     <div className={styles.secondaryDesc}>
-                        <p className={styles.marketType}>بازار ثانویه</p>
+                        <p className={styles.marketType}>بازار خروج</p>
                         <h3 className={styles.propertyName}>{propertyData.name}</h3>
                         <div className={`row ${styles.border}`}>
                             <div className={`col-lg-6 col-12 ${styles.buy}`}>
@@ -334,7 +345,7 @@ Exit.getInitialProps = async (ctx) => {
     const res = await axios.get(`http://api.subkhoone.com/api/assets/${id}`);
     // if (res && res.data){
     // let secondaryId = res.data["present_secondary_market"]["id"]
-    let secondaryId = res.data.data["present_secondary_market"].id;
+    let secondaryId = res.data.data["present_exit_market"].id;
     console.log("secondaryId", secondaryId)
 
     const secondaryBuyOffers = await axios.get(`http://api.subkhoone.com/api/assets/${id}/secondary_markets/${secondaryId}/secondary_buy_offers`);

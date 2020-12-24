@@ -108,9 +108,9 @@ export default function Navbar() {
                                     <>
                                         <a
                                             onClick={expandLog}
-                                            className="d-inline-flex cursor-pointer "
+                                            className={`d-inline-flex cursor-pointer ${styles.linkDecoration}`}
                                         >
-                                            <i className={`r-person ${styles.Header_itemIcon}`}></i>
+                                            <i className={`r-person ${styles.Header_itemIcon} `}></i>
                                         </a>
                                         <ul
                                             className={`${styles.Header_dropDown} ${toggleLoginButton && styles.Header_expanded} `}>
@@ -168,23 +168,23 @@ export default function Navbar() {
                                 <a className={`nav-link  -colorDark ${styles.nLink2}`}>چرا ما</a>
                             </Link>
                             <Link href="/contactUs">
-                                <a className={`nav-link  -colorDark ${styles.nLink3}`}>تماس با ما</a>
+                                <a className={`nav-link  -colorDark ${styles.nLink2}`}>تماس با ما</a>
                             </Link>
-                            {/*<Link href="/blog">*/}
-                            {/*    <a className={`nav-link  -colorDark ${styles.nLink2}`}>وبلاگ</a>*/}
-                            {/*</Link>*/}
-                            {/*<Link href="/faq">*/}
-                            {/*    <a className={`nav-link  -colorDark ${styles.nLink2}`}>سوالات متداول</a>*/}
-                            {/*</Link>*/}
+                            <Link href="/blog">
+                                <a className={`nav-link  -colorDark ${toggleMenu ? styles.nLink2 : styles.nLink3}`}>وبلاگ</a>
+                            </Link>
+                            <Link href="/faq">
+                                <a className={`nav-link  -colorDark ${toggleMenu ? styles.nLink3 : styles.displayNone}`}>سوالات متداول</a>
+                            </Link>
                         </div>
-                        <div className="mr-auto d-flex align-items-center">
+                        <div className={`mr-auto d-flex align-items-center`}>
                             <Link href="#">
-                                <a className={`search - icon & quot; ${styles.Header_mLeft}`}>
+                                <a className={`search - icon & quot; ${styles.Header_mLeft}  ${toggleMenu && styles.displayNone}`}>
                                     <i className={`r-search1 ${styles.Header_itemIcon}`}></i>
                                 </a>
                             </Link>
 
-                            <div className="position-relative">
+                            <div className={`position-relative  ${toggleMenu && styles.displayNone}`}>
                                 {data ?
                                     (
                                         <>
@@ -194,7 +194,7 @@ export default function Navbar() {
                                             >
                                                 <img
                                                     className={styles.Header_userPic}
-                                                    src="https://api2.subkhoone.com//uploads/avatars/1/IuRyuvRInAXzeo3HYQ6GSd7eq5IG8fxLqKJspELlnTIBBnOsLRF9-K33_IUBoV6F/4UMyHV4Df6-CLvZd06TQfq976J_PQVhylNzwpajFwkdL6DgYfbgRfdVHYZnw1fRR.png"
+                                                    src="https://api.subkhoone.com//uploads/avatars/1/IuRyuvRInAXzeo3HYQ6GSd7eq5IG8fxLqKJspELlnTIBBnOsLRF9-K33_IUBoV6F/4UMyHV4Df6-CLvZd06TQfq976J_PQVhylNzwpajFwkdL6DgYfbgRfdVHYZnw1fRR.png"
                                                 />
                                                 <div className="d-flex flex-column justify-content-center">
                                                     <p className={styles.Header_userName}>{data.data.data["first_name"]}</p>
@@ -226,7 +226,7 @@ export default function Navbar() {
                                         <>
                                             <a
                                                 onClick={expandLog}
-                                                className="d-inline-flex cursor-pointer "
+                                                className={`d-inline-flex cursor-pointer ${styles.linkDecoration}`}
                                             >
                                                 <i className={`r-person ${styles.Header_itemIcon}`}></i>
                                             </a>
