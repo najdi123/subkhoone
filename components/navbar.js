@@ -8,8 +8,8 @@ import axios from "axios"
 import login from "../pages/login";
 
 
-export default function Navbar() {
-
+export default function Navbar(props) {
+    console.log("nav props: ",props)
     const [toggleMenu, setToggleMenu] = useState(false)
     const [toggleLoginButton, setToggleLoginButton] = useState(false)
     const [toggleLoginButton2, setToggleLoginButton2] = useState(false)
@@ -19,7 +19,7 @@ export default function Navbar() {
     const fetcher = params => url => {
         // const fetcher = (url,cookies) => {
         // console.log("cookies222222222222222: ", cookies.token)
-
+        // console.log("cookies.token: ",cookies.token)
         return axios.request({
             method: "GET",
             url: url,
@@ -29,7 +29,7 @@ export default function Navbar() {
         })
     }
 
-    const {data, error} = useSWR('http://api.subkhoone.com/api/users/my', fetcher(cookies))
+    const {data, error} = useSWR('https://api.subkhoone.com/api/users/my', fetcher(cookies))
     // const { data, error } = useSWR('https://api2.subkhoone.com/api/users/my', url => fetcher(url, cookies))
     // console.log("fetcher: ", fetcher)
     // console.log("swr data is", data)
@@ -65,17 +65,18 @@ export default function Navbar() {
                             {data ?
                                 (
                                     <>
+                                        {console.log("DDDataaaa: ", data)}
                                         <div
                                             onClick={expandLog2}
                                             className="d-flex justify-content-center align-items-center cursor-pointer "
                                         >
                                             <img
                                                 className={styles.Header_userPic}
-                                                src="https://api2.subkhoone.com//uploads/avatars/1/IuRyuvRInAXzeo3HYQ6GSd7eq5IG8fxLqKJspELlnTIBBnOsLRF9-K33_IUBoV6F/4UMyHV4Df6-CLvZd06TQfq976J_PQVhylNzwpajFwkdL6DgYfbgRfdVHYZnw1fRR.png"
+                                                src={`https://api.subkhoone.com${data.data.data["image_url"]}`}
                                             />
                                             <div className="d-flex flex-column justify-content-center">
                                                 <p className={styles.Header_userName}>{data.data.data["first_name"]}</p>
-                                                <p className={`${styles.Header_balance__PQiLL} -colorBlack`}>{data.data.data["balance"]}</p>
+                                                <p className={`${styles.Header_balance} -colorBlack`}>{data.data.data["balance"]}</p>
                                             </div>
                                         </div>
                                         <ul
@@ -135,7 +136,10 @@ export default function Navbar() {
                     <span className={`${styles.navLogo} ${styles.navbarBrand}`}>
                           <Link href="/">
                               <a>
-                                  <img src="/images/logo.svg"/>
+                                  <img className={props.home=="home" && "d-none"} src="/images/logo.svg"/>
+
+                                  <img className={props.home=="home" ? "d-none d-xl-block" : 'd-none'} src="/images/logo.svg"/>
+                                  <img className={props.home=="home" ?  "d-xl-none" : 'd-none'} src="/images/white-logo.svg"/>
                               </a>
                           </Link>
                     </span>
@@ -147,7 +151,12 @@ export default function Navbar() {
                         className={`${styles.removeBorder} navbar-toggler collapsed`}
                     >
                         <span>
-                            <img src="/images/menu-open-blue.svg"/>
+                            {/*<img src="/images/menu-open-blue.svg"/>*/}
+
+                                 <img className={props.home=="home" && "d-none"} src="/images/menu-open-blue.svg"/>
+
+                                  <img className={props.home=="home" ? "d-none d-xl-block" : 'd-none'} src="/images/menu-open-blue.svg"/>
+                                  <img className={props.home=="home" ? "d-xl-none" : 'd-none'} src="/images/menu-dots-white.svg"/>
                         </span>
                     </button>
                     <div

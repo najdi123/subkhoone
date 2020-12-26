@@ -43,74 +43,74 @@ function Secondary({propertyData, secondaryBuyOffersProps, secondarySellOffersPr
     }
 
     const BuyOfferModal=()=>{
-       return(
-           <Modal className="rtl " show={showBuy} onHide={handleCloseBuy}>
-               <Modal.Header className={styles.borderBottomNone} closeButton>
-                   <Modal.Title className={`r-hands-and-gestures ${styles.modalHeaderIcon}`}>ثبت پیشنهاد خرید</Modal.Title>
-               </Modal.Header>
-               <Modal.Body className={styles.modalBody}>
-                   <h4 className={`text-center ${styles.modalBodyTitle}`}>مشخص کردن ارقام</h4>
-                   <div className="d-flex justify-content-center align-items-center mb-4 row ">
-                       <div className="col-md-6 col-12 d-flex justify-content-center align-items-center p-0">
-                           <p className={styles.modalText}>ثبت پیشنهاد خرید</p>
-                           <div className={styles.autoCalcInputBox}>
-                               <input className={styles.numericInput} type="number" id="quantity"
-                                      name="quantity" min="1"/>
-                           </div>
-                           <p className={styles.modalText}>صاب به قیمت هر صاب</p>
-                       </div>
-                       {/*<label htmlFor="formControlRange">Example Range input</label>*/}
-                       <div className="col-md-6 col-12 d-flex justify-content-center align-items-center p-0" >
-                           <div className={styles.popupRange}>
-                               <div className={styles.inputRange}>
+        return(
+            <Modal className="rtl " show={showBuy} onHide={handleCloseBuy}>
+                <Modal.Header className={styles.borderBottomNone} closeButton>
+                    <Modal.Title className={`r-hands-and-gestures ${styles.modalHeaderIcon}`}>ثبت پیشنهاد خرید</Modal.Title>
+                </Modal.Header>
+                <Modal.Body className={styles.modalBody}>
+                    <h4 className={`text-center ${styles.modalBodyTitle}`}>مشخص کردن ارقام</h4>
+                    <div className="d-flex justify-content-center align-items-center mb-4 row ">
+                        <div className="col-md-6 col-12 d-flex justify-content-center align-items-center p-0">
+                            <p className={styles.modalText}>ثبت پیشنهاد خرید</p>
+                            <div className={styles.autoCalcInputBox}>
+                                <input className={styles.numericInput} type="number" id="quantity"
+                                       name="quantity" min="1"/>
+                            </div>
+                            <p className={styles.modalText}>صاب به قیمت هر صاب</p>
+                        </div>
+                        {/*<label htmlFor="formControlRange">Example Range input</label>*/}
+                        <div className="col-md-6 col-12 d-flex justify-content-center align-items-center p-0" >
+                            <div className={styles.popupRange}>
+                                <div className={styles.inputRange}>
                                                 <span className={`${styles.inputRangeLabel} ${styles.inputRangeLabelMin}`}>
                                                     <span className="input-range__label-container">
                                                         4324
                                                     </span>
                                                 </span>
-                                   <input type="range" min="20" max="30"
-                                          className={`form-control-range ltr mb-2`}
-                                          id="formControlRange"/>
-                                   <span className={`${styles.inputRangeLabel} ${styles.inputRangeLabelMax}`}>
+                                    <input type="range" min="20" max="30"
+                                           className={`form-control-range ltr mb-2`}
+                                           id="formControlRange"/>
+                                    <span className={`${styles.inputRangeLabel} ${styles.inputRangeLabelMax}`}>
                                                     <span className="input-range__label-container">
                                                         225550
                                                     </span>
                                                 </span>
-                               </div>
-                           </div>
-                           <p className={styles.modalText}>هزار تومان</p>
-                       </div>
-                   </div>
-                   <div className="d-flex justify-content-center align-items-center row">
-                       <div className="d-flex justify-content-center align-items-center col-md-5 col-12 p-0 pr-2 ">
-                           <p className={styles.modalText}>
-                               <span className={styles.boldText}>قیمت نهان:  </span>
-                               هر صاب
-                           </p>
-                           <div className={styles.autoCalcInputBox}>
+                                </div>
+                            </div>
+                            <p className={styles.modalText}>هزار تومان</p>
+                        </div>
+                    </div>
+                    <div className="d-flex justify-content-center align-items-center row">
+                        <div className="d-flex justify-content-center align-items-center col-md-5 col-12 p-0 pr-2 ">
+                            <p className={styles.modalText}>
+                                <span className={styles.boldText}>قیمت نهان:  </span>
+                                هر صاب
+                            </p>
+                            <div className={styles.autoCalcInputBox}>
 
-                               <input className={styles.numericInput} type="number" id="quantity"
-                                      name="quantity" min="1"/>
-                           </div>
-                           <p className={styles.modalText}>
-                               میلیون تومان
-                           </p>
-                       </div>
-                       <div className="d-flex justify-content-center align-items-center col-md-7 col-12 p-0">
-                           <p className={styles.modalTextSmall}> (این قیمت به صورت محرمانه تا زمان پایان بازار ثانویه محفوظ می ماند)</p>
+                                <input className={styles.numericInput} type="number" id="quantity"
+                                       name="quantity" min="1"/>
+                            </div>
+                            <p className={styles.modalText}>
+                                میلیون تومان
+                            </p>
+                        </div>
+                        <div className="d-flex justify-content-center align-items-center col-md-7 col-12 p-0">
+                            <p className={styles.modalTextSmall}> (این قیمت به صورت محرمانه تا زمان پایان بازار ثانویه محفوظ می ماند)</p>
 
-                       </div>
-                   </div>
-                   <div className="justify-content-center d-flex">
-                       <Button className={`btn  ${styles.modalBtn}`}
-                               variant="primary" onClick={handleCloseBuy}>
-                           ثبت
-                       </Button>
-                   </div>
-               </Modal.Body>
+                        </div>
+                    </div>
+                    <div className="justify-content-center d-flex">
+                        <Button className={`btn  ${styles.modalBtn}`}
+                                variant="primary" onClick={handleCloseBuy}>
+                            ثبت
+                        </Button>
+                    </div>
+                </Modal.Body>
 
-           </Modal>
-       )
+            </Modal>
+        )
     }
     const SellOfferModal=()=>{
         return(

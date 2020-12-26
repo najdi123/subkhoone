@@ -51,7 +51,8 @@ export default function Properties({properties, ids, secondary, primary, exit}) 
 
         return market.map(item => {
             return (
-                <div>
+                // <div className={display[marketName]?'d-block':'d-none'}>
+                <div >
                     <Link href={`/properties/${item.id}/${marketName}`}>
                         {/*<Link href={`/properties/${item.id}/${data}`}>*/}
                         <a>
@@ -65,8 +66,8 @@ export default function Properties({properties, ids, secondary, primary, exit}) 
                                             <div className={styles.imgBox}>
                                                 <span className={styles.imgBox__label}>
                                                     {market == secondary && "بازار ثانویه"}
-                                                    {market == primary && "بازار primary"}
-                                                    {market == exit && "بازار exit"}
+                                                    {market == primary && "بازار اولیه"}
+                                                    {market == exit && "بازار خروج"}
                                     </span>
                                                 <img
                                                     className={styles.card__img}
@@ -100,22 +101,22 @@ export default function Properties({properties, ids, secondary, primary, exit}) 
         return(
             <section className={`d-flex flex-row-reverse justify-content-end ${styles.marketsTab}`}>
                 <button
-                    className={display.latest && styles.active}
+                    className={display.latest ? styles.active : ""}
                     onClick={() => setDisplay({latest: true, primary: false, secondary: false, exit: false})}
                 >آخرین ملک ها
                 </button>
                 <button
-                    className={display.primary && styles.active}
+                    className={display.latest ? styles.active : ""}
                     onClick={() => setDisplay({latest: false, primary: true, secondary: false, exit: false})}
                 >بازار اولیه
                 </button>
                 <button
-                    className={display.secondary && styles.active}
+                    className={display.latest ? styles.active : ""}
                     onClick={() => setDisplay({latest: false, primary: false, secondary: true, exit: false})}
                 >بازار ثانویه
                 </button>
                 <button
-                    className={display.exit && styles.active}
+                    className={display.latest ? styles.active : ""}
                     onClick={() => setDisplay({latest: false, primary: false, secondary: false, exit: true})}
                 >بازار خروج
                 </button>

@@ -3,26 +3,30 @@ import Layout from "../../../../components/layout";
 import styles from "../../../../styles/secondaryMarketProperty.module.css"
 import moment from 'moment-jalaali';
 import {useState, useContext, useEffect} from 'react'
-
+import React from "react";
+import Slider from "react-slick";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import {DataContext} from "../../../../context/DataContext";
 import JSONbig from 'json-bigint';
 import ApiReq from "../../../../helpers/ApiReq";
+import {useCookies} from "react-cookie";
+
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import {Carousel} from 'react-responsive-carousel';
+import InputRange from 'react-input-range';
+import "react-input-range/lib/css/index.css"
 
 
-function Exit({propertyData, secondaryBuyOffersProps, secondarySellOffersProps}) {
+function Exit({propertyData, exitBuyOffersProps}) {
     const {data} = useContext(DataContext);
 
-
-    const [secondaryBuyOffers, setSecondaryBuyOffers] = useState()
-    const [secondarySellOffers, setSecondarySellOffers] = useState()
+    const [exitBuyOffers, setExitBuyOffers] = useState()
     useEffect(() => {
-        setSecondaryBuyOffers(secondaryBuyOffersProps)
-        setSecondarySellOffers(secondarySellOffersProps)
-    }, [secondaryBuyOffersProps])
-    console.log("setSecondaryBuyOffers: ", secondaryBuyOffers)
+        setExitBuyOffers(exitBuyOffersProps)
+    }, [exitBuyOffersProps])
+    console.log("exit propertyData: ", propertyData)
 
     const [showBuy, setShowBuy] = useState(false);
     const [showSell, setShowSell] = useState(false);
@@ -32,25 +36,48 @@ function Exit({propertyData, secondaryBuyOffersProps, secondarySellOffersProps})
     const handleCloseSell = () => setShowSell(false);
     const handleShowSell = () => setShowSell(true);
 
-    console.log("propertyData: ", propertyData)
-    // console.log("router: ",router["query"].id)
+
+    const [cookies, setCookie] = useCookies(['token']);
     const SubmitBuyOffer = async (e) => {
         e.preventDefault()
         const config = {
-            headers: {'Content-Type': 'application/json'},
-            method: 'GET',
-            url: 'https://api.subkhoone.com/api/assets',
+            body: {
+                "exit_buy_offer": {
+                    "number_of_shares": "10",
+                    "hidden_price": "43000",
+                    "price": 5342
+                }
+            },
+            headers: {
+                'Content-Type': 'application/json',
+                "Authorization": `Bearer ${cookies.token}`
+            },
+            method: 'POST',
+            url: `https://api.subkhoone.com/api/assets/${propertyData.id}/exit_markets/${propertyData["present_exit_market"].id}/exit_market_offers`,
         };
 
         const res = await ApiReq(config)
-        const secondaryBuyOffers = await axios.get(`http://api.subkhoone.com/api/assets/${id}/secondary_markets/${secondaryId}/secondary_buy_offers`);
+        console.log("submit buy offer res: ", res)
     }
 
-    const BuyOfferModal=()=>{
-        return(
+    const [inputRange, setInputRange] = useState({
+        value: propertyData["present_exit_market"]["low_price"],
+    })
+    const [buyOffer, setBuyOffer] = useState({
+        subs: 0,
+        price: inputRange.value,
+        hiddenPrice: 0
+    })
+
+    const BuyOfferModal = () => {
+
+        // console.log("buyOffer inputRange: ", inputRange)
+        // console.log("buyOffer: ", buyOffer)
+        return (
             <Modal className="rtl " show={showBuy} onHide={handleCloseBuy}>
                 <Modal.Header className={styles.borderBottomNone} closeButton>
-                    <Modal.Title className={`r-hands-and-gestures ${styles.modalHeaderIcon}`}>ثبت پیشنهاد خرید</Modal.Title>
+                    <Modal.Title className={`r-hands-and-gestures ${styles.modalHeaderIcon}`}>ثبت پیشنهاد
+                        خرید</Modal.Title>
                 </Modal.Header>
                 <Modal.Body className={styles.modalBody}>
                     <h4 className={`text-center ${styles.modalBodyTitle}`}>مشخص کردن ارقام</h4>
@@ -58,28 +85,33 @@ function Exit({propertyData, secondaryBuyOffersProps, secondarySellOffersProps})
                         <div className="col-md-6 col-12 d-flex justify-content-center align-items-center p-0">
                             <p className={styles.modalText}>ثبت پیشنهاد خرید</p>
                             <div className={styles.autoCalcInputBox}>
-                                <input className={styles.numericInput} type="number" id="quantity"
-                                       name="quantity" min="1"/>
+                                <input
+                                    className={styles.numericInput}
+                                    type="number"
+                                    id="quantity"
+                                    name="quantity"
+                                    min="1"
+                                    value={buyOffer.subs}
+                                    onChange={e => setBuyOffer({...buyOffer, subs: e.target.value})}
+                                />
+
                             </div>
                             <p className={styles.modalText}>صاب به قیمت هر صاب</p>
                         </div>
                         {/*<label htmlFor="formControlRange">Example Range input</label>*/}
-                        <div className="col-md-6 col-12 d-flex justify-content-center align-items-center p-0" >
+                        <div className="col-md-6 col-12 d-flex justify-content-center align-items-center p-0">
                             <div className={styles.popupRange}>
                                 <div className={styles.inputRange}>
-                                                <span className={`${styles.inputRangeLabel} ${styles.inputRangeLabelMin}`}>
-                                                    <span className="input-range__label-container">
-                                                        4324
-                                                    </span>
-                                                </span>
-                                    <input type="range" min="20" max="30"
-                                           className={`form-control-range ltr mb-2`}
-                                           id="formControlRange"/>
-                                    <span className={`${styles.inputRangeLabel} ${styles.inputRangeLabelMax}`}>
-                                                    <span className="input-range__label-container">
-                                                        225550
-                                                    </span>
-                                                </span>
+
+                                    <InputRange
+                                        className={`form-control-range ltr mb-2`}
+                                        maxValue={propertyData["present_exit_market"]["high_price"]}
+                                        minValue={propertyData["present_exit_market"]["low_price"]}
+                                        value={inputRange.value}
+                                        // onChange={(e)=>setBuyOffer({...buyOffer,rangeValue: e.target.value})}
+                                        onChange={value => setInputRange({value})}
+                                    />
+
                                 </div>
                             </div>
                             <p className={styles.modalText}>هزار تومان</p>
@@ -93,15 +125,21 @@ function Exit({propertyData, secondaryBuyOffersProps, secondarySellOffersProps})
                             </p>
                             <div className={styles.autoCalcInputBox}>
 
-                                <input className={styles.numericInput} type="number" id="quantity"
-                                       name="quantity" min="1"/>
+                                <input
+                                    className={styles.numericInput}
+                                    type="number" id="quantity"
+                                    name="quantity" min="1"
+                                    value={buyOffer.hiddenPrice}
+                                    onChange={e => setBuyOffer({...buyOffer, hiddenPrice: e.target.value})}
+                                />
                             </div>
                             <p className={styles.modalText}>
                                 میلیون تومان
                             </p>
                         </div>
                         <div className="d-flex justify-content-center align-items-center col-md-7 col-12 p-0">
-                            <p className={styles.modalTextSmall}> (این قیمت به صورت محرمانه تا زمان پایان بازار ثانویه محفوظ می ماند)</p>
+                            <p className={styles.modalTextSmall}> (این قیمت به صورت محرمانه تا زمان پایان بازار ثانویه
+                                محفوظ می ماند)</p>
 
                         </div>
                     </div>
@@ -112,15 +150,14 @@ function Exit({propertyData, secondaryBuyOffersProps, secondarySellOffersProps})
                                 ثبت
                             </Button>
                         </div>
-
                     </div>
                 </Modal.Body>
 
             </Modal>
         )
     }
-    const SellOfferModal=()=>{
-        return(
+    const SellOfferModal = () => {
+        return (
             <Modal className="rtl" show={showSell} onHide={handleCloseSell}>
                 <Modal.Header closeButton>
                     <Modal.Title>ثبت پیشنهاد فروش</Modal.Title>
@@ -138,19 +175,22 @@ function Exit({propertyData, secondaryBuyOffersProps, secondarySellOffersProps})
         )
     }
 
+    let image1 = `http://api.subkhoone.com${propertyData.images && propertyData.images.main && propertyData.images.main.original}`
+    let image2 = `http://api.subkhoone.com${propertyData.images && propertyData.images["1"] && propertyData.images["1"].original}`
+    let image3 = `http://api.subkhoone.com${propertyData.images && propertyData.images["2"] && propertyData.images["2"].original}`
+    let image4 = `http://api.subkhoone.com${propertyData.images && propertyData.images["3"] && propertyData.images["3"].original}`
+    let image5 = `http://api.subkhoone.com${propertyData.images && propertyData.images["4"] && propertyData.images["4"].original}`
 
     return (
         <Layout>
             <div className={styles.property}>
                 <div className={styles.description}>
-                    {/*<div className={` sticky-top ${styles.fixed}`}>*/}
                     <div className="position-sticky">
                         <div className={styles.texts}>
                             <div className={styles.line}>
                                 <div>
                                     <p className="pl-3">
-
-                                        {moment(propertyData["present_secondary_market"]["start_date_time"]).format('jYYYY/jM/jD')}
+                                        {moment(propertyData["present_exit_market"]["start_date_time"]).format('jYYYY/jM/jD')}
                                     </p>
                                 </div>
                                 <div className={`r-clock rtl d-flex align-items-center ${styles.rightPad}`}>
@@ -160,7 +200,6 @@ function Exit({propertyData, secondaryBuyOffersProps, secondarySellOffersProps})
 
                             <div className={styles.line}>
                                 <div className="">
-                                    {/*<p className="pl-3">{data && data.data && data.data.data[0].id}</p>*/}
                                     <p className="pl-3">{data && data["use_types"] && data["use_types"]["name"]}</p>
                                 </div>
                                 <div className={`r-building-house-p rtl d-flex align-items-center ${styles.rightPad}`}>
@@ -208,15 +247,13 @@ function Exit({propertyData, secondaryBuyOffersProps, secondarySellOffersProps})
 
 
                         <div className={styles.buttons}>
-                            <button variant="primary" onClick={handleShowBuy} className={` ${styles.submitBtn} ${styles.buyButton}`}>ثبت
+                            <button variant="primary" onClick={handleShowBuy}
+                                    className={` ${styles.submitBtn} ${styles.buyButton}`}>ثبت
                                 پیشنهاد خرید
                             </button>
                             {BuyOfferModal()}
 
 
-                            <button variant="primary" onClick={handleShowSell} className={` ${styles.submitBtn} ${styles.sellButton}`}>ثبت پیشنهاد فروش</button>
-
-                            {SellOfferModal()}
 
                         </div>
                     </div>
@@ -224,69 +261,55 @@ function Exit({propertyData, secondaryBuyOffersProps, secondarySellOffersProps})
 
                 </div>
                 <div className={styles.rightSide}>
-                    <div className="main">
-                        <img
-                            className={styles.mainImage}
-                            src={`http://api.subkhoone.com${propertyData.images && propertyData.images.main && propertyData.images.main.original}`}
-                            // src={`http://api.subkhoone.com${propertyData.images.main.original}`}
-                            alt=""
-                        />
-
-                    </div>
-                    <div className="slides">
-                        <img
-                            className={styles.slideImage}
-                            src={`http://api.subkhoone.com${propertyData.images && propertyData.images.main && propertyData.images.main.original}`}
-                            // src={`http://api.subkhoone.com${propertyData.images["1"].original}`}
-                            alt=""
-                        />
+                    <div className={styles.carousel}>
+                        <Carousel>
+                            {
+                                image1 &&
+                                <div>
+                                    <img
+                                        src={image1}
+                                    />
+                                </div>
+                            }
+                            {
+                                image2 &&
+                                <div>
+                                    <img
+                                        src={image2}
+                                    />
+                                </div>
+                            }
+                            {
+                                image3 &&
+                                <div>
+                                    <img
+                                        src={image3}
+                                    />
+                                </div>
+                            }
+                            {
+                                image4 &&
+                                <div>
+                                    <img
+                                        src={image4}
+                                    />
+                                </div>
+                            }
+                            {
+                                image5 &&
+                                <div>
+                                    <img
+                                        src={image5}
+                                    />
+                                </div>
+                            }
+                        </Carousel>
                     </div>
                     <div className={styles.secondaryDesc}>
                         <p className={styles.marketType}>بازار خروج</p>
                         <h3 className={styles.propertyName}>{propertyData.name}</h3>
                         <div className={`row ${styles.border}`}>
-                            <div className={`col-lg-6 col-12 ${styles.buy}`}>
-                                <div className="d-flex justify-content-end mt-4 pr-2">
-
-                                    <h2 className={styles.sellTitle}>فروش</h2>
-                                    <h2 className="r-money pl-2"></h2>
-                                </div>
-                                <table className="table table-striped mt-4 text-center">
-                                    <thead>
-                                    <tr className={styles.borderNone}>
-                                        <th scope="col">قیمت
-                                            <div className={styles.tHeader}/>
-                                        </th>
-                                        <th scope="col">متراژ
-                                            <div className={styles.tHeader}/>
-                                        </th>
-                                        <th scope="col">تعداد افراد
-                                            <div className={styles.tHeader}/>
-                                        </th>
-
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-
-                                    {
-                                        secondarySellOffers && secondarySellOffers.map(item => {
-                                                return (
-                                                    <tr key={item.id} className={styles.tableContent}>
-                                                        <td>{item["price"]}</td>
-                                                        <td> صاب {item["number_of_shares"]}</td>
-                                                        <td>1</td>
-
-                                                    </tr>
-                                                )
-
-                                            }
-                                        )
-                                    }
-
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div className={`col-lg-6 col-12 ${styles.sell}`}>
+                            <div className={` col-12 ${styles.sell}`}>
                                 <div className="d-flex justify-content-end mt-4 pr-2">
 
                                     <h2 className={styles.sellTitle}>خرید</h2>
@@ -305,13 +328,11 @@ function Exit({propertyData, secondaryBuyOffersProps, secondarySellOffersProps})
                                         <th scope="col">تعداد افراد
                                             <div className={styles.tHeader}/>
                                         </th>
-
-
                                     </tr>
                                     </thead>
                                     <tbody>
                                     {
-                                        secondaryBuyOffers && secondaryBuyOffers.map(item => {
+                                        exitBuyOffers && exitBuyOffers.map(item => {
                                                 return (
                                                     <tr key={item.id} className={styles.tableContent}>
                                                         <td>{item["price"]}</td>
@@ -320,7 +341,6 @@ function Exit({propertyData, secondaryBuyOffersProps, secondarySellOffersProps})
 
                                                     </tr>
                                                 )
-
                                             }
                                         )
                                     }
@@ -339,26 +359,17 @@ function Exit({propertyData, secondaryBuyOffersProps, secondarySellOffersProps})
 Exit.getInitialProps = async (ctx) => {
     const {id} = ctx.query;
     axios.defaults.transformResponse = [function (config) {
-        // Do whatever you want to transform the data
         return JSONbig.parse(config);
     }]
     const res = await axios.get(`http://api.subkhoone.com/api/assets/${id}`);
-    // if (res && res.data){
-    // let secondaryId = res.data["present_secondary_market"]["id"]
-    let secondaryId = res.data.data["present_exit_market"].id;
-    console.log("secondaryId", secondaryId)
+    let exitId = res.data.data["present_exit_market"].id;
+    // console.log("exitId", exitId)
 
-    const secondaryBuyOffers = await axios.get(`http://api.subkhoone.com/api/assets/${id}/secondary_markets/${secondaryId}/secondary_buy_offers`);
-    const secondarySellOffers = await axios.get(`http://api.subkhoone.com/api/assets/${id}/secondary_markets/${secondaryId}/secondary_sell_offers`);
-
-    // }
-
+    const exitBuyOffers = await axios.get(`http://api.subkhoone.com/api/assets/${id}/exit_markets/${exitId}/exit_market_offers`);
     return {
         propertyData: res.data.data,
-        secondaryBuyOffersProps: secondaryBuyOffers.data.data,
-        secondarySellOffersProps: secondarySellOffers.data.data
+        exitBuyOffersProps: exitBuyOffers.data.data
     }
-
 };
 
 export default Exit

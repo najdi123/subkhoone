@@ -15,6 +15,8 @@ import {useCookies} from "react-cookie";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import {Carousel} from 'react-responsive-carousel';
+import InputRange from 'react-input-range';
+import "react-input-range/lib/css/index.css"
 
 
 function Secondary({propertyData, secondaryBuyOffersProps, secondarySellOffersProps}) {
@@ -26,7 +28,7 @@ function Secondary({propertyData, secondaryBuyOffersProps, secondarySellOffersPr
         setSecondaryBuyOffers(secondaryBuyOffersProps)
         setSecondarySellOffers(secondarySellOffersProps)
     }, [secondaryBuyOffersProps])
-    console.log("propertyData: ", propertyData)
+    console.log("secondary propertyData: ", propertyData)
 
     const [showBuy, setShowBuy] = useState(false);
     const [showSell, setShowSell] = useState(false);
@@ -60,8 +62,20 @@ function Secondary({propertyData, secondaryBuyOffersProps, secondarySellOffersPr
         console.log("submit buy offer res: ", res)
     }
 
+    const [inputRange, setInputRange] = useState({
+        value: propertyData["present_secondary_market"]["low_price"],
+    })
+    const [buyOffer, setBuyOffer] = useState({
+        subs: 0,
+        price: inputRange.value,
+        hiddenPrice: 0
+    })
+
     const BuyOfferModal = () => {
-        return (
+
+        // console.log("buyOffer inputRange: ", inputRange)
+        // console.log("buyOffer: ", buyOffer)
+       return (
             <Modal className="rtl " show={showBuy} onHide={handleCloseBuy}>
                 <Modal.Header className={styles.borderBottomNone} closeButton>
                     <Modal.Title className={`r-hands-and-gestures ${styles.modalHeaderIcon}`}>ثبت پیشنهاد
@@ -73,8 +87,16 @@ function Secondary({propertyData, secondaryBuyOffersProps, secondarySellOffersPr
                         <div className="col-md-6 col-12 d-flex justify-content-center align-items-center p-0">
                             <p className={styles.modalText}>ثبت پیشنهاد خرید</p>
                             <div className={styles.autoCalcInputBox}>
-                                <input className={styles.numericInput} type="number" id="quantity"
-                                       name="quantity" min="1"/>
+                                <input
+                                    className={styles.numericInput}
+                                    type="number"
+                                    id="quantity"
+                                    name="quantity"
+                                    min="1"
+                                    value={buyOffer.subs}
+                                    onChange={e => setBuyOffer({...buyOffer, subs: e.target.value})}
+                                />
+
                             </div>
                             <p className={styles.modalText}>صاب به قیمت هر صاب</p>
                         </div>
@@ -82,20 +104,16 @@ function Secondary({propertyData, secondaryBuyOffersProps, secondarySellOffersPr
                         <div className="col-md-6 col-12 d-flex justify-content-center align-items-center p-0">
                             <div className={styles.popupRange}>
                                 <div className={styles.inputRange}>
-                                                <span
-                                                    className={`${styles.inputRangeLabel} ${styles.inputRangeLabelMin}`}>
-                                                    <span className="input-range__label-container">
-                                                        4324
-                                                    </span>
-                                                </span>
-                                    <input type="range" min="20" max="30"
-                                           className={`form-control-range ltr mb-2`}
-                                           id="formControlRange"/>
-                                    <span className={`${styles.inputRangeLabel} ${styles.inputRangeLabelMax}`}>
-                                                    <span className="input-range__label-container">
-                                                        225550
-                                                    </span>
-                                                </span>
+
+                                    <InputRange
+                                        className={`form-control-range ltr mb-2`}
+                                        maxValue={propertyData["present_secondary_market"]["high_price"]}
+                                        minValue={propertyData["present_secondary_market"]["low_price"]}
+                                        value={inputRange.value}
+                                        // onChange={(e)=>setBuyOffer({...buyOffer,rangeValue: e.target.value})}
+                                        onChange={value => setInputRange({value})}
+                                    />
+
                                 </div>
                             </div>
                             <p className={styles.modalText}>هزار تومان</p>
@@ -109,8 +127,13 @@ function Secondary({propertyData, secondaryBuyOffersProps, secondarySellOffersPr
                             </p>
                             <div className={styles.autoCalcInputBox}>
 
-                                <input className={styles.numericInput} type="number" id="quantity"
-                                       name="quantity" min="1"/>
+                                <input
+                                    className={styles.numericInput}
+                                    type="number" id="quantity"
+                                    name="quantity" min="1"
+                                    value={buyOffer.hiddenPrice}
+                                    onChange={e => setBuyOffer({...buyOffer, hiddenPrice: e.target.value})}
+                                />
                             </div>
                             <p className={styles.modalText}>
                                 میلیون تومان
@@ -154,33 +177,12 @@ function Secondary({propertyData, secondaryBuyOffersProps, secondarySellOffersPr
         )
     }
 
-    const Carousel2 = (main, second) => {
-        return (
-            <Carousel>
-                <div>
-                    <img src={main}/>
-                    <p className="legend">Legend 1</p>
-                </div>
-                <div>
-                    <img src={second}/>
-                    <p className="legend">Legend 2</p>
-                </div>
-                <div>
-                    <img src="assets/3.jpeg"/>
-                    <p className="legend">Legend 3</p>
-                </div>
-            </Carousel>
-        )
-    }
+    let image1 = `http://api.subkhoone.com${propertyData.images && propertyData.images.main && propertyData.images.main.original}`
+    let image2 = `http://api.subkhoone.com${propertyData.images && propertyData.images["1"] && propertyData.images["1"].original}`
+    let image3 = `http://api.subkhoone.com${propertyData.images && propertyData.images["2"] && propertyData.images["2"].original}`
+    let image4 = `http://api.subkhoone.com${propertyData.images && propertyData.images["3"] && propertyData.images["3"].original}`
+    let image5 = `http://api.subkhoone.com${propertyData.images && propertyData.images["4"] && propertyData.images["4"].original}`
 
-    var settings = {
-        dots: true,
-        fade: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1
-    };
     return (
         <Layout>
             <div className={styles.property}>
@@ -267,42 +269,48 @@ function Secondary({propertyData, secondaryBuyOffersProps, secondarySellOffersPr
                 </div>
                 <div className={styles.rightSide}>
                     <div className={styles.carousel}>
-                        <div>
-                            <img
-                                src={`http://api.subkhoone.com${propertyData.images && propertyData.images.main && propertyData.images.main.original}`}
-                            />
-                        </div>
-                        <Slider {...settings}>
+                        <Carousel>
                             {
-                                propertyData.images && propertyData.images && Object.keys(propertyData.images).filter((item) => {
-                                    return item !== 'main'
-                                }).map((item) => {
-                                    return <div>
-                                        <img
-                                            src={`http://api.subkhoone.com${propertyData.images && propertyData.images[item].original && propertyData.images[item].original}`}
-                                        />
-                                    </div>
-                                })
+                                image1 &&
+                                <div>
+                                    <img
+                                        src={image1}
+                                    />
+                                </div>
                             }
-                            <div>
-                                <h3>1</h3>
-                            </div>
-                            <div>
-                                <h3>2</h3>
-                            </div>
-                            <div>
-                                <h3>3</h3>
-                            </div>
-                            <div>
-                                <h3>4</h3>
-                            </div>
-                            <div>
-                                <h3>5</h3>
-                            </div>
-                            <div>
-                                <h3>6</h3>
-                            </div>
-                        </Slider>
+                            {
+                                image2 &&
+                                <div>
+                                    <img
+                                        src={image2}
+                                    />
+                                </div>
+                            }
+                            {
+                                image3 &&
+                                <div>
+                                    <img
+                                        src={image3}
+                                    />
+                                </div>
+                            }
+                            {
+                                image4 &&
+                                <div>
+                                    <img
+                                        src={image4}
+                                    />
+                                </div>
+                            }
+                            {
+                                image5 &&
+                                <div>
+                                    <img
+                                        src={image5}
+                                    />
+                                </div>
+                            }
+                        </Carousel>
                     </div>
                     <div className={styles.secondaryDesc}>
                         <p className={styles.marketType}>بازار ثانویه</p>
@@ -403,7 +411,7 @@ Secondary.getInitialProps = async (ctx) => {
     }]
     const res = await axios.get(`http://api.subkhoone.com/api/assets/${id}`);
     let secondaryId = res.data.data["present_secondary_market"].id;
-    console.log("secondaryId", secondaryId)
+    // console.log("secondaryId", secondaryId)
 
     const secondaryBuyOffers = await axios.get(`http://api.subkhoone.com/api/assets/${id}/secondary_markets/${secondaryId}/secondary_buy_offers`);
     const secondarySellOffers = await axios.get(`http://api.subkhoone.com/api/assets/${id}/secondary_markets/${secondaryId}/secondary_sell_offers`);
