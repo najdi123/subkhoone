@@ -42,24 +42,44 @@ function Primary({propertyData, primaryBuyOffersProps, primarySellOffersProps}) 
     const [cookies, setCookie] = useCookies(['token']);
     const SubmitBuyOffer = async (e) => {
         e.preventDefault()
-        const config = {
-            body: {
-                "primary_buy_offer": {
-                    "number_of_shares": "10",
-                    "hidden_price": "43000",
-                    "price": 5342
+        // const config = {
+        //     body: {
+        //         "primary_offer": {
+        //             "number_of_shares": "10",
+        //             "price": 5342
+        //         }
+        //     },
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //         "Authorization": `Bearer ${cookies.token}`
+        //     },
+        //     method: 'POST',
+        //     url: `https://api.subkhoone.com/api/assets/${propertyData.id}/primary_markets/${propertyData["present_primary_market"].id}/primary_offers`,
+        // };
+        //
+        // const res = await ApiReq(config)
+        // console.log("submit primary offer res: ", res)
+
+        const request = {
+            data: {
+                "primary_offer": {
+                    "number_of_shares": "100",
+                    "price": "1000",
                 }
             },
-            headers: {
-                'Content-Type': 'application/json',
-                "Authorization": `Bearer ${cookies.token}`
-            },
+            headers: {'Authorization': `Bearer ${cookies['token']}`},
             method: 'POST',
-            url: `https://api.subkhoone.com/api/assets/${propertyData.id}/primary_markets/${propertyData["present_primary_market"].id}/primary_buy_offers`,
-        };
+            url: `https://api.subkhoone.com/api/assets/615893000762523649/primary_markets/616502087196442625/primary_offers`
+    };
 
-        const res = await ApiReq(config)
-        console.log("submit buy offer res: ", res)
+        const result = ApiReq(request);
+        result.then(res => {
+            console.log('submit ', res);
+
+
+        }).catch(err => {
+            console.log(err)
+        })
     }
 
     const [inputRange, setInputRange] = useState({

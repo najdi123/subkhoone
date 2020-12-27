@@ -106,17 +106,17 @@ export default function Properties({properties, ids, secondary, primary, exit}) 
                 >آخرین ملک ها
                 </button>
                 <button
-                    className={display.latest ? styles.active : ""}
+                    className={display.primary ? styles.active : ""}
                     onClick={() => setDisplay({latest: false, primary: true, secondary: false, exit: false})}
                 >بازار اولیه
                 </button>
                 <button
-                    className={display.latest ? styles.active : ""}
+                    className={display.secondary ? styles.active : ""}
                     onClick={() => setDisplay({latest: false, primary: false, secondary: true, exit: false})}
                 >بازار ثانویه
                 </button>
                 <button
-                    className={display.latest ? styles.active : ""}
+                    className={display.exit ? styles.active : ""}
                     onClick={() => setDisplay({latest: false, primary: false, secondary: false, exit: true})}
                 >بازار خروج
                 </button>

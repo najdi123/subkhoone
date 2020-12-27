@@ -5,11 +5,9 @@ import Link from 'next/link'
 
 import useSWR from 'swr'
 import axios from "axios"
-import login from "../pages/login";
 
 
 export default function Navbar(props) {
-    console.log("nav props: ",props)
     const [toggleMenu, setToggleMenu] = useState(false)
     const [toggleLoginButton, setToggleLoginButton] = useState(false)
     const [toggleLoginButton2, setToggleLoginButton2] = useState(false)
@@ -17,8 +15,6 @@ export default function Navbar(props) {
     // console.log("cookie token: ", cookies.token)
 
     const fetcher = params => url => {
-        // const fetcher = (url,cookies) => {
-        // console.log("cookies222222222222222: ", cookies.token)
         // console.log("cookies.token: ",cookies.token)
         return axios.request({
             method: "GET",
@@ -30,11 +26,10 @@ export default function Navbar(props) {
     }
 
     const {data, error} = useSWR('https://api.subkhoone.com/api/users/my', fetcher(cookies))
-    // const { data, error } = useSWR('https://api2.subkhoone.com/api/users/my', url => fetcher(url, cookies))
-    // console.log("fetcher: ", fetcher)
+
     // console.log("swr data is", data)
     // console.log("swr error: ", error)
-    // console.log("toggleLoginButton2: ", toggleLoginButton2)
+
 
 
     const expandLog = () => {
@@ -65,7 +60,6 @@ export default function Navbar(props) {
                             {data ?
                                 (
                                     <>
-                                        {console.log("DDDataaaa: ", data)}
                                         <div
                                             onClick={expandLog2}
                                             className="d-flex justify-content-center align-items-center cursor-pointer "

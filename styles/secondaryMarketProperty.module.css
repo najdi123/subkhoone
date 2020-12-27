@@ -11,7 +11,10 @@
 
 
 }
-
+.topRow{
+    /*display: flex;*/
+    /*flex-direction: row;*/
+}
 .fixed{
     position: fixed;
     width: 24%;
@@ -286,8 +289,8 @@
 @media (min-width: 800px){
     .property{
         margin: 103px 90px;
-        display: flex;
-        flex-direction: row;
+        /*display: flex;*/
+        /*flex-direction: row;*/
     }
     .description{
         width: 50%;
@@ -460,10 +463,19 @@
     }
 }
 @media (min-width: 992px){
+    .topRow{
+        display: flex;
+        flex-direction: row-reverse;
+    }
+    .carousel{
+        padding-left: 15px;
+    }
+
     .property{
-        margin: 103px 114px;
+        margin: 103px 25px;
         display: flex;
     }
+
     .description{
         width: 40%;
         text-align: center;
