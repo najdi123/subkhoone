@@ -42,24 +42,6 @@ function Primary({propertyData, primaryBuyOffersProps, primarySellOffersProps}) 
     const [cookies, setCookie] = useCookies(['token']);
     const SubmitBuyOffer = async (e) => {
         e.preventDefault()
-        // const config = {
-        //     body: {
-        //         "primary_offer": {
-        //             "number_of_shares": "10",
-        //             "price": 5342
-        //         }
-        //     },
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         "Authorization": `Bearer ${cookies.token}`
-        //     },
-        //     method: 'POST',
-        //     url: `https://api.subkhoone.com/api/assets/${propertyData.id}/primary_markets/${propertyData["present_primary_market"].id}/primary_offers`,
-        // };
-        //
-        // const res = await ApiReq(config)
-        // console.log("submit primary offer res: ", res)
-
         const request = {
             data: {
                 "primary_offer": {

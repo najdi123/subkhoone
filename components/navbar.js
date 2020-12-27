@@ -208,6 +208,7 @@ export default function Navbar(props) {
                                                 <li className={styles.Header_dropDown__item}>
                                                     <Link href="/dashboard">
                                                         <a className={styles.dropDown_item_link}>
+
                                                             <i className={`r-person ${styles.Header_dropDown__icon}`}></i>
                                                             پنل کاربری
                                                         </a>

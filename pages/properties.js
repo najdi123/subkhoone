@@ -23,30 +23,6 @@ export default function Properties({properties, ids, secondary, primary, exit}) 
     console.log("properties from getInitialProps: ", properties)
     // console.log("setSecondary: ", secondary)
 
-    const newStateItem = () => {
-        return (
-            <div className={styles.estateCard}>
-                <div className={styles.cardTop}>
-                    <h3 className={styles.card__title}>ملک شماره یک</h3>
-                    <div className={styles.imgContainer}>
-                        <div className={styles.imgBox}>
-                            <span className={styles.imgBox__label}>بازار ثانویه</span>
-                            <img
-                                className={styles.card__img}
-                                src="https://api.subkhoone.com//uploads/users/615959526349045761/assets-615890603958042625-main/4hhoo3hiYf4GyrjMhyUvsrBGMUiqv3_yJEJxvd4RUGl9-l4OitpDpG2PpUm6/xiEY-NVL9RhhomqzX9majxjbE8RkT93QXqis3CkOzdUxECiU34mHpe03aVvU.png"
-                            />
-                        </div>
-                        <span className={styles.card__location}>-</span>
-                    </div>
-                </div>
-                <div className={styles.priceBox}>
-                    <span className={styles.label}>نوع ملک</span>
-                    <span
-                        className={styles.price}>نوع ملک</span>
-                </div>
-            </div>
-        )
-    }
     const getList = (market, marketName) => {
 
         return market.map(item => {

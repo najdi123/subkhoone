@@ -1,5 +1,5 @@
 .property{
-    margin: 103px 90px;
+    margin: 103px 60px;
     display: flex;
     flex-direction: column;
 }
@@ -71,13 +71,13 @@
     border-radius: 25px;
     /*margin-left: 15px;*/
 }
-.slideImage{
-    width: 20%;
-    text-align: center;
-    border: 1px solid #F2F5F8;
-    border-radius: 25px;
-    /*margin-left: 15px;*/
-}
+/*.slideImage{*/
+/*    width: 20%;*/
+/*    text-align: center;*/
+/*    border: 1px solid #F2F5F8;*/
+/*    border-radius: 25px;*/
+/*    !*margin-left: 15px;*!*/
+/*}*/
 
 .borderBottomNone{
     border: transparent !important;
@@ -288,7 +288,7 @@
 
 @media (min-width: 800px){
     .property{
-        margin: 103px 90px;
+        margin: 103px 50px;
         /*display: flex;*/
         /*flex-direction: row;*/
     }
@@ -343,9 +343,9 @@
     /*    margin: 5px ;*/
     /*}*/
 
-    .rightSide{
-        width: 50%;
-    }
+    /*.rightSide{*/
+    /*    width: 50%;*/
+    /*}*/
     .mainImage{
         width: 100%;
         text-align: center;
@@ -469,7 +469,9 @@
     }
     .carousel{
         padding-left: 15px;
+        /*width: 60%;*/
     }
+
 
     .property{
         margin: 103px 25px;
