@@ -3,7 +3,7 @@ import {Carousel} from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import styles from "../styles/ImagePicker.module.css";
 
-const ImagePicker = ({propertyData}) => {
+const ImagePicker = ({propertyData, market}) => {
 
     let image1 = `http://api.subkhoone.com${propertyData.images && propertyData.images.main && propertyData.images.main.original}`
     let image2 = `http://api.subkhoone.com${propertyData.images && propertyData.images["1"] && propertyData.images["1"].original}`
@@ -19,7 +19,8 @@ const ImagePicker = ({propertyData}) => {
                 <div className={styles.slickRelative}>
                     <img src={mainImage} alt=""/>
                     <span className={styles.slickBadge}>
-                    بازار ثانویه
+                    بازار
+                        {" "+market}
                 </span>
                 </div>
             </div>

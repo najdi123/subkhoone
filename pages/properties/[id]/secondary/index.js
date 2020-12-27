@@ -1,6 +1,6 @@
 import axios from "axios";
 import Layout from "../../../../components/layout";
-import styles from "../../../../styles/secondaryMarketProperty.module.css"
+import styles from "../../../../styles/marketProperty.module.css"
 import {useState, useContext, useEffect} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {DataContext} from "../../../../context/DataContext";
@@ -29,8 +29,8 @@ function Secondary({propertyData, secondaryBuyOffersProps, secondarySellOffersPr
         <Layout>
             <div className={styles.property}>
                 <div className={styles.topRow}>
-                    <div className={styles.carousel}>
-                        <ImagePicker  propertyData={propertyData} />
+                    <div className={styles.wrapper}>
+                        <ImagePicker  propertyData={propertyData} market={"ثانویه"}/>
                         <div className={`${styles.secondaryDesc} d-none d-lg-block`}>
                             <p className={styles.marketType}>بازار ثانویه</p>
                             <h3 className={styles.propertyName}>{propertyData.name}</h3>

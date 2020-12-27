@@ -1,4 +1,4 @@
-import styles from "../styles/secondaryMarketProperty.module.css";
+import styles from "../styles/marketProperty.module.css";
 
 const OffersTable =({props,type})=>{
     // console.log("props from component: ",type)

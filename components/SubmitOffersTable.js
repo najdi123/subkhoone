@@ -1,4 +1,4 @@
-import styles from "../styles/secondaryMarketProperty.module.css";
+import styles from "../styles/marketProperty.module.css";
 import moment from "moment-jalaali";
 import Modal from "react-bootstrap/Modal";
 import InputRange from "react-input-range";

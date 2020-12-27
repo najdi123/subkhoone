@@ -19,9 +19,7 @@ export default function Properties({properties, ids, secondary, primary, exit}) 
         exit: false
     })
 
-
     console.log("properties from getInitialProps: ", properties)
-    // console.log("setSecondary: ", secondary)
 
     const getList = (market, marketName) => {
 
@@ -153,7 +151,6 @@ export default function Properties({properties, ids, secondary, primary, exit}) 
 
 Properties.getInitialProps = async (ctx) => {
     axios.defaults.transformResponse = [function (config) {
-        // Do whatever you want to transform the data
         return JSONbig.parse(config);
     }]
 
