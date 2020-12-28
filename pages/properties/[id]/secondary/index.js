@@ -1,7 +1,7 @@
 import axios from "axios";
 import Layout from "../../../../components/layout";
 import styles from "../../../../styles/marketProperty.module.css"
-import {useState, useContext, useEffect} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {DataContext} from "../../../../context/DataContext";
 import JSONbig from 'json-bigint';
@@ -25,18 +25,29 @@ function Secondary({propertyData, secondaryBuyOffersProps, secondarySellOffersPr
     }, [secondaryBuyOffersProps])
     // console.log("secondary propertyData: ", propertyData)
 
+    // useEffect(() => {
+    //     const arr = []
+    //     if (Object.keys(propertyData.images).length > 0) {
+    //         Object.entries(propertyData.images).map((item,index)=>{
+    //             console.log("item.original: ",item[1]["original"])
+    //            arr.push(`http://api.subkhoone.com${item[1]["original"]}`)
+    //         })
+    //     }
+    //     console.log("arr: ", arr)
+    // }, [])
+
     return (
         <Layout>
             <div className={styles.property}>
                 <div className={styles.topRow}>
                     <div className={styles.wrapper}>
-                        <ImagePicker  propertyData={propertyData} market={"ثانویه"}/>
+                        <ImagePicker propertyData={propertyData} market={"ثانویه"} images={propertyData.images}/>
                         <div className={`${styles.secondaryDesc} d-none d-lg-block`}>
                             <p className={styles.marketType}>بازار ثانویه</p>
                             <h3 className={styles.propertyName}>{propertyData.name}</h3>
                             <div className={`row ${styles.border}`}>
-                                <OffersTable props={secondaryBuyOffers} type={"خرید"} />
-                                <OffersTable props={secondarySellOffers} type={"فروش"} />
+                                <OffersTable props={secondaryBuyOffers} type={"خرید"}/>
+                                <OffersTable props={secondarySellOffers} type={"فروش"}/>
                             </div>
                         </div>
                     </div>
@@ -47,8 +58,8 @@ function Secondary({propertyData, secondaryBuyOffersProps, secondarySellOffersPr
                         <p className={styles.marketType}>بازار ثانویه</p>
                         <h3 className={styles.propertyName}>{propertyData.name}</h3>
                         <div className={`row ${styles.border}`}>
-                            <OffersTable props={secondaryBuyOffers} type={"خرید"} />
-                            <OffersTable props={secondarySellOffers} type={"فروش"} />
+                            <OffersTable props={secondaryBuyOffers} type={"خرید"}/>
+                            <OffersTable props={secondarySellOffers} type={"فروش"}/>
 
                         </div>
                     </div>

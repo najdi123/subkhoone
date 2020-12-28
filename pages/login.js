@@ -6,9 +6,8 @@ import axios from "axios"
 import {useRouter} from 'next/router'
 import {useCookies} from "react-cookie";
 
-
-
 export default function Login() {
+    const router = useRouter()
     const [userInput, setUserInput] = useState({
         phone_number: '',
         code: ""
@@ -22,10 +21,11 @@ export default function Login() {
     })
     const [userInfo, setUserInfo] = useState({})
 
+
     const handleChange = (e) => {
         setUserInput({...userInput, [e.target.name]: e.target.value})
     }
-    const handleSubmit = async (e) => {
+    const handleSubmitPhone = async (e) => {
         e.preventDefault();
         setStep(prevState => prevState + 1)
 
@@ -46,8 +46,8 @@ export default function Login() {
             console.log("error", error);
         }
     }
-    const router = useRouter()
-    const handleSubmit2 = async (e) => {
+
+    const handleSubmitCode = async (e) => {
         e.preventDefault()
         const config = {
             headers: {'Content-Type': 'application/json'},
@@ -61,19 +61,15 @@ export default function Login() {
         };
         try {
             const res = await axios(config)
-            console.log("res: ", res);
+            console.log("login res: ", res);
             setStep(prevState => prevState + 1)
             setUserInfo({token: res.data.data["jwt_token"]})
             document.cookie = `token=${res.data.data["jwt_token"]}; path=/`;
             router.push('/')
         } catch (error) {
-            console.log("error", error);
+            console.log("login error", error);
         }
     }
-
-    // console.log("userInput: ", userInput)
-    // console.log("step: ", step)
-    // console.log("userInfo: ", userInfo)
     useEffect(() => {
         if (step === 1) {
             setFormValue({
@@ -121,7 +117,7 @@ export default function Login() {
                                 <button
                                     type="submit"
                                     className={`${styles.Login_blue} ${styles.Login_login}`}
-                                    onClick={step === 0 ? handleSubmit : handleSubmit2}
+                                    onClick={step === 0 ? handleSubmitPhone : handleSubmitCode}
                                 >
                                     {formValue.button}
                                 </button>
