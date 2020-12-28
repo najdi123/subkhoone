@@ -52,7 +52,6 @@ const SubmitOffersTable = ({propertyData,data}) => {
             },
             method: 'POST',
             url: `https://api.subkhoone.com/api/assets/${propertyData.id}/secondary_markets/${propertyData["present_secondary_market"].id}/secondary_buy_offers`,
-            // url:'https://api.subkhoone.com/api/assets/615893000762523649/secondary_markets/617046721635713025/secondary_buy_offers'
         };
         console.log("config: ",config)
         // const res = await ApiReq(config)

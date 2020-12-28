@@ -25,16 +25,6 @@ function Secondary({propertyData, secondaryBuyOffersProps, secondarySellOffersPr
     }, [secondaryBuyOffersProps])
     // console.log("secondary propertyData: ", propertyData)
 
-    // useEffect(() => {
-    //     const arr = []
-    //     if (Object.keys(propertyData.images).length > 0) {
-    //         Object.entries(propertyData.images).map((item,index)=>{
-    //             console.log("item.original: ",item[1]["original"])
-    //            arr.push(`http://api.subkhoone.com${item[1]["original"]}`)
-    //         })
-    //     }
-    //     console.log("arr: ", arr)
-    // }, [])
 
     return (
         <Layout>
