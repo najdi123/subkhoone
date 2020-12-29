@@ -8,7 +8,7 @@ import {useCookies} from "react-cookie";
 import axios from "axios";
 
 
-const SubmitOffersTable = ({propertyData,data}) => {
+const SubmitOffersTable = ({propertyData,data,marketType}) => {
     const [cookies, setCookie] = useCookies(['token']);
 
     const [showBuy, setShowBuy] = useState(false);
@@ -51,7 +51,7 @@ const SubmitOffersTable = ({propertyData,data}) => {
                 "Authorization": `Bearer ${cookies.token}`
             },
             method: 'POST',
-            url: `https://api.subkhoone.com/api/assets/${propertyData.id}/secondary_markets/${propertyData["present_secondary_market"].id}/secondary_buy_offers`,
+            url: `https://api.subkhoone.com/api/assets/${propertyData.id}/secondary_markets/${propertyData[marketType].id}/secondary_buy_offers`,
         };
         console.log("config: ",config)
         // const res = await ApiReq(config)

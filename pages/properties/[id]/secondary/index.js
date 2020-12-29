@@ -41,7 +41,7 @@ function Secondary({propertyData, secondaryBuyOffersProps, secondarySellOffersPr
                             </div>
                         </div>
                     </div>
-                    <SubmitOffersTable propertyData={propertyData} data={data}/>
+                    <SubmitOffersTable propertyData={propertyData} data={data} marketType={"present_secondary_market"}/>
                 </div>
                 <div className={`${styles.secondRow} d-lg-none`}>
                     <div className={styles.secondaryDesc}>

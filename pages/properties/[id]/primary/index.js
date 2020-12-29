@@ -33,7 +33,8 @@ function Primary({propertyData, primaryBuyOffersProps}) {
                             </div>
                         </div>
                     </div>
-                    <SubmitOffersTable propertyData={propertyData} data={data}/>
+                    <SubmitOffersTable propertyData={propertyData} data={data} marketType={"present_primary_market"}/>
+
                 </div>
                 <div className={`${styles.secondRow} d-lg-none`}>
                     <div className={styles.secondaryDesc}>
